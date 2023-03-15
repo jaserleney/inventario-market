@@ -4,6 +4,7 @@ import router from "./router/router.js";
 
 import "./assets/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "sweetalert2/dist/sweetalert2.js";
 

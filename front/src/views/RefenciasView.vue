@@ -1,6 +1,6 @@
 <template>
   <main class="container-md my-4">
-    <div class="d-flex justify-content-between align-content-center">
+    <div class="d-flex justify-content-between align-content-center border-bottom p-3">
       <h1>Referencias</h1>
       <button type="button" class="btn btn-dark">Nuevo</button>
     </div>

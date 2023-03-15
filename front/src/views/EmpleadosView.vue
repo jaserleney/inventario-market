@@ -1,6 +1,6 @@
 <template>
   <main class="container-md my-4">
-    <div class="d-flex justify-content-between align-content-center">
+    <div class="d-flex justify-content-between align-content-center border-bottom p-3">
       <h1>Empleados</h1>
       <button type="button" class="btn btn-dark">Nuevo</button>
     </div>
@@ -27,7 +27,7 @@ export default {
   },
 
   methods: {
-    async getEmpleados() {
+    async getEmployess() {
       this.loader = true;
       let url = "http://localhost:3000/api/v1/employees";
       const { data } = await fetchData(url);
@@ -38,7 +38,7 @@ export default {
   },
 
   created() {
-    this.getEmpleados();
+    this.getEmployess();
   },
 };
 </script>

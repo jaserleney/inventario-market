@@ -1,11 +1,12 @@
 <template>
   <main class="container-md my-4">
-    <div class="d-flex justify-content-between align-content-center">
-      <h1>Marcas</h1>
-      <button type="button" class="btn btn-dark">Nuevo</button>
+    <div class="d-flex justify-content-between align-content-center border-bottom p-3">
+      <h1>{{ title }}</h1>
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
     <Table v-else :brandsArr="brands" />
+    <Form :title="title" />
   </main>
 </template>
 
@@ -17,10 +18,12 @@ export default {
   components: {
     Table: defineAsyncComponent(() => import("../components/Table.vue")),
     Loader: defineAsyncComponent(() => import("../components/Loader.vue")),
+    Form: defineAsyncComponent(() => import("../components/Form.vue")),
   },
 
   data() {
     return {
+      title: "Marcas",
       brands: [],
       loader: false,
     };
@@ -39,6 +42,10 @@ export default {
 
   created() {
     this.getBrands();
+  },
+
+  watch: {
+    brands() {},
   },
 };
 </script>

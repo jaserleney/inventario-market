@@ -25,7 +25,6 @@
         <th scope="col">Descripcion</th>
         <th scope="col">Producto ID</th>
         <th scope="col">Producto</th>
-        <th scope="col">Descripcion</th>
         <th scope="col">Empleado ID</th>
         <th scope="col">Empleado</th>
         <th scope="col">Creado</th>
@@ -53,7 +52,7 @@
           <td>{{ phone }}</td>
           <td>{{ email }}</td>
           <td>
-            <div class="d-flex justify-content-center gap-2">
+            <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
               <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
             </div>
@@ -70,7 +69,7 @@
           <td>{{ description }}</td>
           <td>{{ status }}</td>
           <td>
-            <div class="d-flex justify-content-center gap-2">
+            <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
               <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
             </div>
@@ -82,7 +81,7 @@
           <td>{{ _id }}</td>
           <td>{{ name }}</td>
           <td>
-            <div class="d-flex justify-content-center gap-2">
+            <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
               <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
             </div>
@@ -94,7 +93,7 @@
           <td>{{ _id }}</td>
           <td>{{ name }}</td>
           <td>
-            <div class="d-flex justify-content-center gap-2">
+            <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
               <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
             </div>
@@ -109,11 +108,10 @@
           <td>{{ product_id.name }}</td>
           <td>{{ employee_id._id }}</td>
           <td>{{ employee_id.name }}</td>
-          <td>{{ description }}</td>
           <td>{{ createdAt }}</td>
           <td>{{ updatedAt }}</td>
           <td>
-            <div class="d-flex justify-content-center gap-2">
+            <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
               <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
             </div>
@@ -129,23 +127,18 @@ export default {
   props: {
     employeesArr: {
       type: Array,
-      required: true,
     },
     productsArr: {
       type: Array,
-      required: true,
     },
     asignProductsArr: {
       type: Array,
-      required: true,
     },
     brandsArr: {
       type: Array,
-      required: true,
     },
     refsArr: {
       type: Array,
-      required: true,
     },
   },
 };
