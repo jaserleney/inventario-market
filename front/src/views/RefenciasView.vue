@@ -4,15 +4,41 @@
       <h1>Referencias</h1>
       <button type="button" class="btn btn-dark">Nuevo</button>
     </div>
-    <Table />
+    <Loader v-if="loader" />
+    <Table v-else :refsArr="refs" />
   </main>
 </template>
 
 <script>
 import { defineAsyncComponent } from "vue";
+import fetchData from "../helpers/fetchData.js";
+
 export default {
   components: {
     Table: defineAsyncComponent(() => import("../components/Table.vue")),
+    Loader: defineAsyncComponent(() => import("../components/Loader.vue")),
+  },
+
+  data() {
+    return {
+      refs: [],
+      loader: false,
+    };
+  },
+
+  methods: {
+    async getRefences() {
+      this.loader = true;
+      let url = "http://localhost:3000/api/v1/refs";
+      const { data } = await fetchData(url);
+      console.log(data);
+      this.refs = data;
+      this.loader = false;
+    },
+  },
+
+  created() {
+    this.getRefences();
   },
 };
 </script>

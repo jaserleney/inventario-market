@@ -1,26 +1,119 @@
 <template>
-  <table class="table table-dark table-hover my-4">
+  <table class="table table-dark table-hover my-4 text-center">
     <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+      <tr v-if="employeesArr">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Tel</th>
+        <th scope="col">Email</th>
+      </tr>
+      <tr v-if="productsArr">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Serial</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Referencia</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Estado</th>
+      </tr>
+      <tr v-if="asignProductsArr">
+        <th scope="col">ID</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Producto ID</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Empleado ID</th>
+        <th scope="col">Empleado</th>
+        <th scope="col">Creado</th>
+        <th scope="col">Actualizado</th>
+      </tr>
+      <tr v-if="brandsArr">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+      </tr>
+      <tr v-if="refsArr">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
+      <template v-if="employeesArr">
+        <tr v-for="{ _id, name, lastname, address, phone, email } in employeesArr" :key="_id">
+          <td>{{ _id }}</td>
+          <td>{{ name }}</td>
+          <td>{{ lastname }}</td>
+          <td>{{ address }}</td>
+          <td>{{ phone }}</td>
+          <td>{{ email }}</td>
+        </tr>
+      </template>
+      <template v-if="productsArr">
+        <tr v-for="{ _id, name, serial, brand_id, ref_id, description, status } in productsArr" :key="_id">
+          <td>{{ _id }}</td>
+          <td>{{ name }}</td>
+          <td>{{ serial }}</td>
+          <td>{{ brand_id.name }}</td>
+          <td>{{ ref_id.name }}</td>
+          <td>{{ description }}</td>
+          <td>{{ status }}</td>
+        </tr>
+      </template>
+      <template v-if="brandsArr">
+        <tr v-for="{ _id, name } in brandsArr" :key="_id">
+          <td>{{ _id }}</td>
+          <td>{{ name }}</td>
+        </tr>
+      </template>
+      <template v-if="refsArr">
+        <tr v-for="{ _id, name } in refsArr" :key="_id">
+          <td>{{ _id }}</td>
+          <td>{{ name }}</td>
+        </tr>
+      </template>
+      <template v-if="asignProductsArr">
+        <tr v-for="{ _id, description, createdAt, updatedAt, employee_id, product_id } in asignProductsArr" :key="_id">
+          <td>{{ _id }}</td>
+          <td>{{ description }}</td>
+          <td>{{ product_id._id }}</td>
+          <td>{{ product_id.name }}</td>
+          <td>{{ employee_id._id }}</td>
+          <td>{{ employee_id.name }}</td>
+          <td>{{ description }}</td>
+          <td>{{ createdAt }}</td>
+          <td>{{ updatedAt }}</td>
+        </tr>
+      </template>
     </tbody>
   </table>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    employeesArr: {
+      type: Array,
+      required: true,
+    },
+    productsArr: {
+      type: Array,
+      required: true,
+    },
+    asignProductsArr: {
+      type: Array,
+      required: true,
+    },
+    brandsArr: {
+      type: Array,
+      required: true,
+    },
+    refsArr: {
+      type: Array,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style></style>

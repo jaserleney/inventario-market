@@ -1,18 +1,44 @@
 <template>
   <main class="container-md my-4">
     <div class="d-flex justify-content-between align-content-center">
-      <h1>Asignar Equipos</h1>
+      <h1>Asignar Equipo</h1>
       <button type="button" class="btn btn-dark">Nuevo</button>
     </div>
-    <Table />
+    <Loader v-if="loader" />
+    <Table v-else :asignProductsArr="asignProducts" />
   </main>
 </template>
 
 <script>
 import { defineAsyncComponent } from "vue";
+import fetchData from "../helpers/fetchData.js";
+
 export default {
   components: {
     Table: defineAsyncComponent(() => import("../components/Table.vue")),
+    Loader: defineAsyncComponent(() => import("../components/Loader.vue")),
+  },
+
+  data() {
+    return {
+      asignProducts: [],
+      loader: false,
+    };
+  },
+
+  methods: {
+    async getAsignProducts() {
+      this.loader = true;
+      let url = "http://localhost:3000/api/v1/assigns";
+      const { data } = await fetchData(url);
+      console.log(data);
+      this.asignProducts = data;
+      this.loader = false;
+    },
+  },
+
+  created() {
+    this.getAsignProducts();
   },
 };
 </script>
