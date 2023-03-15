@@ -8,6 +8,7 @@
         <th scope="col">Direccion</th>
         <th scope="col">Tel</th>
         <th scope="col">Email</th>
+        <th scope="col">Acciones</th>
       </tr>
       <tr v-if="productsArr">
         <th scope="col">ID</th>
@@ -17,6 +18,7 @@
         <th scope="col">Referencia</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
       </tr>
       <tr v-if="asignProductsArr">
         <th scope="col">ID</th>
@@ -28,14 +30,17 @@
         <th scope="col">Empleado</th>
         <th scope="col">Creado</th>
         <th scope="col">Actualizado</th>
+        <th scope="col">Acciones</th>
       </tr>
       <tr v-if="brandsArr">
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
       </tr>
       <tr v-if="refsArr">
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -47,6 +52,12 @@
           <td>{{ address }}</td>
           <td>{{ phone }}</td>
           <td>{{ email }}</td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+            </div>
+          </td>
         </tr>
       </template>
       <template v-if="productsArr">
@@ -58,18 +69,36 @@
           <td>{{ ref_id.name }}</td>
           <td>{{ description }}</td>
           <td>{{ status }}</td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+            </div>
+          </td>
         </tr>
       </template>
       <template v-if="brandsArr">
         <tr v-for="{ _id, name } in brandsArr" :key="_id">
           <td>{{ _id }}</td>
           <td>{{ name }}</td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+            </div>
+          </td>
         </tr>
       </template>
       <template v-if="refsArr">
         <tr v-for="{ _id, name } in refsArr" :key="_id">
           <td>{{ _id }}</td>
           <td>{{ name }}</td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+            </div>
+          </td>
         </tr>
       </template>
       <template v-if="asignProductsArr">
@@ -83,6 +112,12 @@
           <td>{{ description }}</td>
           <td>{{ createdAt }}</td>
           <td>{{ updatedAt }}</td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+            </div>
+          </td>
         </tr>
       </template>
     </tbody>
