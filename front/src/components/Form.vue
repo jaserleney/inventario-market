@@ -6,47 +6,54 @@
           <h5 class="modal-title">Nueva {{ title }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form @submit.prevent="postNew">
+          <div class="modal-body">
             <div class="form-group my-3">
               <template v-if="title === 'Marcas'">
                 <label class="form-label" for="brand">{{ title }}</label>
-                <input type="text" class="form-control" id="brand" v-model="brand" placeholder="Nombre Marca" />
+                <input type="text" class="form-control" id="brand" v-model="brand" placeholder="Nombre Marca" required />
               </template>
               <template v-if="title === 'Referencias'">
                 <label class="form-label" for="ref">{{ title }}</label>
-                <input type="text" class="form-control" id="ref" v-model="ref" placeholder="Nombre Refencia" />
+                <input type="text" class="form-control" id="ref" v-model="ref" placeholder="Nombre Refencia" required />
               </template>
               <template v-if="title === 'Empleados'">
                 <label class="form-label" for="employee">{{ title }}</label>
-                <input type="text" class="form-control my-2" id="employee" v-model="employee.name" placeholder="Nombre" />
-                <input type="text" class="form-control my-2" id="employee" v-model="employee.lastname" placeholder="Apellidos" />
-                <input type="text" class="form-control my-2" id="employee" v-model="employee.address" placeholder="Direccion" />
-                <input type="text" class="form-control my-2" id="employee" v-model="employee.phone" placeholder="Telefono" />
-                <input type="email" class="form-control my-2" id="employee" v-model="employee.email" placeholder="Email" />
+                <input type="text" class="form-control my-2" id="employee" v-model="employee.name" placeholder="Nombre" required />
+                <input type="text" class="form-control my-2" id="employee" v-model="employee.lastname" placeholder="Apellidos" required />
+                <input type="text" class="form-control my-2" id="employee" v-model="employee.address" placeholder="Direccion" required />
+                <input type="text" class="form-control my-2" id="employee" v-model="employee.phone" placeholder="Telefono" required />
+                <input type="email" class="form-control my-2" id="employee" v-model="employee.email" placeholder="Email" required />
               </template>
               <template v-if="title === 'Equipos'">
                 <label class="form-label" for="employee">{{ title }}</label>
-                <input type="text" class="form-control my-2" id="employee" v-model="product.name" placeholder="Nombre" />
-                <input type="number" class="form-control my-2" id="employee" v-model="product.serial" placeholder="Serial" />
-                <input type="text" class="form-control my-2" id="employee" v-model="product.brand_id" placeholder="ID Marca" />
-                <input type="text" class="form-control my-2" id="employee" v-model="product.ref_id" placeholder="ID Refencia" />
-                <input type="text" class="form-control my-2" id="employee" v-model="product.description" placeholder="Descripcion" />
-                <input type="text" class="form-control my-2" id="employee" v-model="product.status" placeholder="Estado" />
+                <input type="text" class="form-control my-2" id="employee" v-model="product.name" placeholder="Nombre" required />
+                <input type="number" class="form-control my-2" id="employee" v-model="product.serial" placeholder="Serial" required />
+                <input type="text" class="form-control my-2" id="employee" v-model="product.brand_id" placeholder="ID Marca" required />
+                <input type="text" class="form-control my-2" id="employee" v-model="product.ref_id" placeholder="ID Refencia" required />
+                <input
+                  type="text"
+                  class="form-control my-2"
+                  id="employee"
+                  v-model="product.description"
+                  placeholder="Descripcion"
+                  required
+                />
+                <input type="text" class="form-control my-2" id="employee" v-model="product.status" placeholder="Estado" required />
               </template>
               <template v-if="title === 'Asignar Equipo'">
                 <label class="form-label" for="employee">{{ title }}</label>
-                <input type="text" class="form-control my-2" id="employee" v-model="asign.employee_id" placeholder="ID Empleado" />
-                <input type="text" class="form-control my-2" id="employee" v-model="asign.product_id" placeholder="ID Producto" />
-                <input type="text" class="form-control my-2" id="employee" v-model="asign.description" placeholder="Descripcion" />
+                <input type="text" class="form-control my-2" id="employee" v-model="asign.employee_id" placeholder="ID Empleado" required />
+                <input type="text" class="form-control my-2" id="employee" v-model="asign.product_id" placeholder="ID Producto" required />
+                <input type="text" class="form-control my-2" id="employee" v-model="asign.description" placeholder="Descripcion" required />
               </template>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" @click.prevent="postNew">Enviar</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
