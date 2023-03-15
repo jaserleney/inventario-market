@@ -1,12 +1,12 @@
 <template>
   <main class="container-md my-4">
     <div class="d-flex justify-content-between align-content-center border-bottom p-3">
-      <h1>Equipos</h1>
+      <h1>{{ title }}</h1>
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
-    <Table v-else :productsArr="products" />
-    <Form />
+    <Table v-else :productsArr="products" @select-id="deleteId" />
+    <Form :title="title" />
   </main>
 </template>
 
@@ -23,6 +23,7 @@ export default {
 
   data() {
     return {
+      title: "Equipos",
       products: [],
       loader: false,
     };
@@ -35,6 +36,14 @@ export default {
       const { data } = await fetchData(url);
       console.log(data);
       this.products = data;
+      this.loader = false;
+    },
+
+    async deleteId(id) {
+      let url = `http://localhost:3000/api/v1/products/${id}`;
+      this.loader = true;
+      const data = await fetchData(url, "delete");
+      this.getProducts();
       this.loader = false;
     },
   },

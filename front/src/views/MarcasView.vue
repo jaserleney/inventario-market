@@ -5,7 +5,7 @@
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
-    <Table v-else :brandsArr="brands" />
+    <Table v-else :brandsArr="brands" @select-id="deleteId" />
     <Form :title="title" />
   </main>
 </template>
@@ -38,14 +38,18 @@ export default {
       this.brands = data;
       this.loader = false;
     },
+
+    async deleteId(id) {
+      let url = `http://localhost:3000/api/v1/brands/${id}`;
+      this.loader = true;
+      const data = await fetchData(url, "delete");
+      this.getBrands();
+      this.loader = false;
+    },
   },
 
   created() {
     this.getBrands();
-  },
-
-  watch: {
-    brands() {},
   },
 };
 </script>

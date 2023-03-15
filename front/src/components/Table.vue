@@ -54,7 +54,7 @@
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
-              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+              <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
         </tr>
@@ -71,7 +71,7 @@
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
-              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+              <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
         </tr>
@@ -83,7 +83,7 @@
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
-              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+              <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
         </tr>
@@ -95,7 +95,7 @@
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
-              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+              <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
         </tr>
@@ -113,7 +113,7 @@
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
               <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
-              <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+              <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
         </tr>

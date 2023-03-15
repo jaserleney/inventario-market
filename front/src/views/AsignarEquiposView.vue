@@ -1,11 +1,12 @@
 <template>
   <main class="container-md my-4">
     <div class="d-flex justify-content-between align-content-center border-bottom p-3">
-      <h1>Asignar Equipo</h1>
-      <button type="button" class="btn btn-dark">Nuevo</button>
+      <h1>{{ title }}</h1>
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
-    <Table v-else :asignProductsArr="asignProducts" />
+    <Table v-else :asignProductsArr="asignProducts" @select-id="deleteId" />
+    <Form :title="title" />
   </main>
 </template>
 
@@ -17,10 +18,12 @@ export default {
   components: {
     Table: defineAsyncComponent(() => import("../components/Table.vue")),
     Loader: defineAsyncComponent(() => import("../components/Loader.vue")),
+    Form: defineAsyncComponent(() => import("../components/Form.vue")),
   },
 
   data() {
     return {
+      title: "Asignar Equipo",
       asignProducts: [],
       loader: false,
     };
@@ -33,6 +36,14 @@ export default {
       const { data } = await fetchData(url);
       console.log(data);
       this.asignProducts = data;
+      this.loader = false;
+    },
+
+    async deleteId(id) {
+      let url = `http://localhost:3000/api/v1/assigns/${id}`;
+      this.loader = true;
+      const data = await fetchData(url, "delete");
+      this.getAsignProducts();
       this.loader = false;
     },
   },
