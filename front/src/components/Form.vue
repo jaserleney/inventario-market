@@ -56,6 +56,22 @@ export default {
         this.product = "";
         this.$router.go(this.$router.currentRoute);
       }
+
+      if (this.$route.fullPath === "/referencias") {
+        const url = "http://localhost:3000/api/v1/products";
+        const data = await fetchData(url, "post", { name: this.product });
+        Swal.fire("Exito", "Se registro con exito!", "success");
+        this.product = "";
+        this.$router.go(this.$router.currentRoute);
+      }
+
+      if (this.$route.fullPath === "/empleados") {
+        const url = "http://localhost:3000/api/v1/products";
+        const data = await fetchData(url, "post", { name: this.product });
+        Swal.fire("Exito", "Se registro con exito!", "success");
+        this.product = "";
+        this.$router.go(this.$router.currentRoute);
+      }
     },
   },
 
