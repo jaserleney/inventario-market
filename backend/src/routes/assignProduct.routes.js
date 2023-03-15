@@ -62,7 +62,7 @@ const router = Router();
  *                          schema:
  *                              type: array
  *                              items: 
- *                                  $ref: '#/components/schemas/Assigns'
+ *                                  $ref: '#/components/schemas/Assign'
  * */
 router.get('/', assignProductController.getAll);
 
