@@ -1,11 +1,9 @@
-import express from 'express';
+import app from "./app.js";
+import './database.js'
 
-const PORT = 3000;
 
-const app = express();
-app.use(express.json())
-
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (err) => {
-    err ? console.log(err) : console.log(`Servidor corriendo en http://localhost:${PORT}`)
+    err ? console.log(err) : console.log(`Server on http://localhost:${PORT}`)
 })
