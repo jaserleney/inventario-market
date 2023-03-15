@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const fetchData = async (url, method, data = {}) => {
+const fetchData = async (url, method = "get", data = {}) => {
   try {
     const response = await axios({
       method,

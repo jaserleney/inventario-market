@@ -1,6 +1,9 @@
 <template>
-  <main class="container-md">
-    <h1>Asignar Equipos</h1>
+  <main class="container-md my-4">
+    <div class="d-flex justify-content-between align-content-center">
+      <h1>Asignar Equipos</h1>
+      <button type="button" class="btn btn-dark">Nuevo</button>
+    </div>
     <Table />
   </main>
 </template>
