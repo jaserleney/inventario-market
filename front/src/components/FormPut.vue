@@ -42,6 +42,8 @@
                 <input type="text" id="id_empleado" class="form-control mb-2" placeholder="ID Empleado" v-model="obj.id_employee" />
                 <label for="name_empleado" class="form-label">Nombre Empleado</label>
                 <input
+                  disabled
+                  readonly
                   type="text"
                   id="name_empleado"
                   class="form-control mb-2"
@@ -51,7 +53,15 @@
                 <label for="id_product" class="form-label">ID Producto</label>
                 <input type="text" id="id_product" class="form-control mb-2" placeholder="ID Producto" v-model="obj.id_product" />
                 <label for="name_product" class="form-label">Nombre Producto</label>
-                <input type="text" id="name_product" class="form-control mb-2" placeholder="Nombre Producto" v-model="obj.name_product" />
+                <input
+                  disabled
+                  readonly
+                  type="text"
+                  id="name_product"
+                  class="form-control mb-2"
+                  placeholder="Nombre Producto"
+                  v-model="obj.name_product"
+                />
               </template>
             </div>
           </div>
