@@ -5,7 +5,7 @@
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
-    <Table v-else :refsArr="refs" @select-id="deleteId" @change="changeRef" />
+    <Table v-else :refsArr="refs" @select-id="deleteId" @changeId="changeRef" />
     <Form :title="title" />
     <FormPut :title="title" :obj="refSelected" @submitUpdate="updateId" />
   </main>

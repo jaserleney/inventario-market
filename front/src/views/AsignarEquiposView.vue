@@ -5,9 +5,9 @@
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
-    <Table v-else :asignProductsArr="asignProducts" @change="changeRef" />
+    <Table v-else :asignProductsArr="asignProducts" @select-id="deleteId" @changeId="changeAsign" />
     <Form :title="title" />
-    <FormPut :title="title" :obj="refSelected" @submitUpdate="updateId" />
+    <FormPut :title="title" :obj="asignSelected" @submitUpdate="updateId" v-if="asignSelected" />
   </main>
 </template>
 
@@ -28,7 +28,7 @@ export default {
       title: "Asignar Equipo",
       asignProducts: [],
       loader: false,
-      refSelected: {},
+      asignSelected: {},
     };
   },
 
@@ -50,15 +50,28 @@ export default {
       this.loader = false;
     },
 
-    changeRef(obj) {
-      console.log(obj);
-      this.refSelected = obj;
+    changeAsign(array) {
+      console.log(array);
+      const [{ _id, description }, { _id: id_employee, name: name_employee }, { name: name_product, _id: id_product }] = array;
+
+      const objUpdate = {
+        _id,
+        description,
+        id_employee,
+        name_employee,
+        name_product,
+        id_product,
+      };
+      console.log(objUpdate);
+      this.asignSelected = objUpdate;
     },
 
     async updateId(obj) {
+      console.log(obj);
       let url = `http://localhost:3000/api/v1/assigns/${obj._id}`;
       this.loader = true;
       const data = await fetchData(url, "put", obj);
+      console.log(data);
       this.$router.go(this.$router.currentRoute);
     },
   },

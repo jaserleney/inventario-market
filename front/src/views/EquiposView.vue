@@ -5,9 +5,9 @@
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
-    <Table v-else :productsArr="products" @select-id="deleteId" @change="changeRef" />
+    <Table v-else :productsArr="products" @select-id="deleteId" @changeId="changeProduct" />
     <Form :title="title" />
-    <FormPut :title="title" :obj="refSelected" @submitUpdate="updateId" />
+    <FormPut :title="title" :obj="productsSelected" @submitUpdate="updateId" v-if="productsSelected" />
   </main>
 </template>
 
@@ -28,7 +28,7 @@ export default {
       title: "Equipos",
       products: [],
       loader: false,
-      refSelected: {},
+      productsSelected: {},
     };
   },
 
@@ -50,9 +50,22 @@ export default {
       this.loader = false;
     },
 
-    changeRef(obj) {
-      console.log(obj);
-      this.refSelected = obj;
+    changeProduct(arr) {
+      console.log(arr);
+      const [{ _id, name, description, serial, status }, { _id: id_brand, name: name_brand }, { _id: id_ref, name: name_ref }] = arr;
+      const objUp = {
+        _id,
+        name,
+        description,
+        serial,
+        status,
+        id_brand,
+        name_brand,
+        name_brand,
+        id_ref,
+        name_ref,
+      };
+      this.productsSelected = objUp;
     },
 
     async updateId(obj) {

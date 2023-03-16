@@ -14,8 +14,8 @@
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
         <th scope="col">Serial</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Referencia</th>
+        <th scope="col">Marca ID</th>
+        <th scope="col">Referencia ID</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Estado</th>
         <th scope="col">Acciones</th>
@@ -53,7 +53,14 @@
           <td>{{ email }}</td>
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
-              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+                @click="$emit('changeId', { _id, name, lastname, address, phone, email })"
+              >
+                <i class="bi bi-pen-fill"></i>
+              </button>
               <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
@@ -64,8 +71,8 @@
           <td>{{ _id }}</td>
           <td>{{ name }}</td>
           <td>{{ serial }}</td>
-          <td>{{ brand_id.name }}</td>
-          <td>{{ ref_id.name }}</td>
+          <td>{{ brand_id._id }}</td>
+          <td>{{ ref_id._id }}</td>
           <td>{{ description }}</td>
           <td>{{ status }}</td>
           <td>
@@ -74,7 +81,7 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal2"
-                @click="$emit('change', { _id, name, serial, brand_id, ref_id, description, status })"
+                @click="$emit('changeId', [{ _id, name, serial, description, status }, { ...brand_id }, { ...ref_id }])"
               >
                 <i class="bi bi-pen-fill"></i>
               </button>
@@ -89,7 +96,14 @@
           <td>{{ name }}</td>
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
-              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+                @click="$emit('changeId', { _id, name })"
+              >
+                <i class="bi bi-pen-fill"></i>
+              </button>
               <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
@@ -105,7 +119,7 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal2"
-                @click="$emit('change', { _id, name })"
+                @click="$emit('changeId', { _id, name })"
               >
                 <i class="bi bi-pen-fill"></i>
               </button>
@@ -130,7 +144,7 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal2"
-                @click="$emit('change', { _id, description, employee_id, product_id })"
+                @click="$emit('changeId', [{ _id, description }, { ...employee_id }, { ...product_id }])"
               >
                 <i class="bi bi-pen-fill"></i>
               </button>
