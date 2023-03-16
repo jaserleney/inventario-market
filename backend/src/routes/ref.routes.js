@@ -52,7 +52,7 @@ const router = Router();
  *                          schema:
  *                              type: array
  *                              items: 
- *                                  $ref: '#/components/schemas/References'
+ *                                  $ref: '#/components/schemas/Reference'
  * */
 router.get('/', RefController.getAll);
 
