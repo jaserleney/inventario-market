@@ -70,7 +70,14 @@
           <td>{{ status }}</td>
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
-              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+                @click="$emit('change', { _id, name, serial, brand_id, ref_id, description, status })"
+              >
+                <i class="bi bi-pen-fill"></i>
+              </button>
               <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
@@ -94,7 +101,14 @@
           <td>{{ name }}</td>
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
-              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+                @click="$emit('change', { _id, name })"
+              >
+                <i class="bi bi-pen-fill"></i>
+              </button>
               <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>
@@ -112,7 +126,14 @@
           <td>{{ updatedAt }}</td>
           <td>
             <div class="d-flex justify-content-center gap-2 flex-column flex-md-row fs-6">
-              <button class="btn btn-primary"><i class="bi bi-pen-fill"></i></button>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+                @click="$emit('change', { _id, description, employee_id, product_id })"
+              >
+                <i class="bi bi-pen-fill"></i>
+              </button>
               <button class="btn btn-danger" @click="$emit('select-id', _id)"><i class="bi bi-trash3-fill"></i></button>
             </div>
           </td>

@@ -5,8 +5,9 @@
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
     </div>
     <Loader v-if="loader" />
-    <Table v-else :refsArr="refs" @select-id="deleteId" />
+    <Table v-else :refsArr="refs" @select-id="deleteId" @change="changeRef" />
     <Form :title="title" />
+    <FormPut :title="title" :obj="refSelected" @submitUpdate="updateId" />
   </main>
 </template>
 
@@ -19,6 +20,7 @@ export default {
     Table: defineAsyncComponent(() => import("../components/Table.vue")),
     Loader: defineAsyncComponent(() => import("../components/Loader.vue")),
     Form: defineAsyncComponent(() => import("../components/Form.vue")),
+    FormPut: defineAsyncComponent(() => import("../components/FormPut.vue")),
   },
 
   data() {
@@ -26,6 +28,7 @@ export default {
       title: "Referencias",
       refs: [],
       loader: false,
+      refSelected: {},
     };
   },
 
@@ -45,6 +48,18 @@ export default {
       const data = await fetchData(url, "delete");
       this.getRefences();
       this.loader = false;
+    },
+
+    changeRef(obj) {
+      console.log(obj);
+      this.refSelected = obj;
+    },
+
+    async updateId(obj) {
+      let url = `http://localhost:3000/api/v1/refs/${obj._id}`;
+      this.loader = true;
+      const data = await fetchData(url, "put", obj);
+      this.$router.go(this.$router.currentRoute);
     },
   },
 

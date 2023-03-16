@@ -26,15 +26,15 @@
                 <input type="email" class="form-control my-2" id="employee" v-model="employee.email" placeholder="Email" required />
               </template>
               <template v-if="title === 'Equipos'">
-                <label class="form-label" for="employee">{{ title }}</label>
-                <input type="text" class="form-control my-2" id="employee" v-model="product.name" placeholder="Nombre" required />
-                <input type="number" class="form-control my-2" id="employee" v-model="product.serial" placeholder="Serial" required />
-                <input type="text" class="form-control my-2" id="employee" v-model="product.brand_id" placeholder="ID Marca" required />
-                <input type="text" class="form-control my-2" id="employee" v-model="product.ref_id" placeholder="ID Refencia" required />
+                <label class="form-label" for="product">{{ title }}</label>
+                <input type="text" class="form-control my-2" id="product" v-model="product.name" placeholder="Nombre" required />
+                <input type="number" class="form-control my-2" id="product" v-model="product.serial" placeholder="Serial" required />
+                <input type="text" class="form-control my-2" id="product" v-model="product.brand_id" placeholder="ID Marca" required />
+                <input type="text" class="form-control my-2" id="product" v-model="product.ref_id" placeholder="ID Refencia" required />
                 <input
                   type="text"
                   class="form-control my-2"
-                  id="employee"
+                  id="product"
                   v-model="product.description"
                   placeholder="Descripcion"
                   required
@@ -42,10 +42,10 @@
                 <input type="text" class="form-control my-2" id="employee" v-model="product.status" placeholder="Estado" required />
               </template>
               <template v-if="title === 'Asignar Equipo'">
-                <label class="form-label" for="employee">{{ title }}</label>
-                <input type="text" class="form-control my-2" id="employee" v-model="asign.employee_id" placeholder="ID Empleado" required />
-                <input type="text" class="form-control my-2" id="employee" v-model="asign.product_id" placeholder="ID Producto" required />
-                <input type="text" class="form-control my-2" id="employee" v-model="asign.description" placeholder="Descripcion" required />
+                <label class="form-label" for="asign">{{ title }}</label>
+                <input type="text" class="form-control my-2" id="asign" v-model="asign.employee_id" placeholder="ID Empleado" required />
+                <input type="text" class="form-control my-2" id="asign" v-model="asign.product_id" placeholder="ID Producto" required />
+                <input type="text" class="form-control my-2" id="asign" v-model="asign.description" placeholder="Descripcion" required />
               </template>
             </div>
           </div>
