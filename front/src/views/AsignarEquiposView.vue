@@ -67,10 +67,22 @@ export default {
     },
 
     async updateId(obj) {
-      console.log(obj);
+      const { _id, description, id_employee, name_employee, name_product, id_product } = obj;
+      const objUpdate = {
+        _id,
+        description,
+        product_id: {
+          _id: id_product,
+          name: name_product,
+        },
+        employee_id: {
+          _id: id_employee,
+          name: name_employee,
+        },
+      };
       let url = `http://localhost:3000/api/v1/assigns/${obj._id}`;
       this.loader = true;
-      const data = await fetchData(url, "put", obj);
+      const data = await fetchData(url, "put", objUpdate);
       console.log(data);
       this.$router.go(this.$router.currentRoute);
     },
